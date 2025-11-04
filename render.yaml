@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: helena-facta-api
+    env: python
+    plan: starter
+    region: oregon
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "uvicorn app:app --host 0.0.0.0 --port $PORT"
+    envVars:
+      - key: FACTA_BASE_URL
+        value: https://webservice-homol.facta.com.br
+      - key: FACTA_BASIC_AUTH
+        value: Basic OTY2NzY6MWV1eDVsdWdzYmkwZjI4Y3BuejE=
+      - key: LOGIN_CERTIFICADO
+        value: "96676"
+      - key: REQUEST_TIMEOUT
+        value: "45"
